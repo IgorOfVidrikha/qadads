@@ -1,22 +1,83 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
   <title>Генератор случайных цитат</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background-color: #f5f5f5;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    #quote-container {
+      width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    #quote {
+      font-size: 24px;
+      line-height: 1.5em;
+      margin-bottom: 20px;
+    }
+
+    #author {
+      font-size: 16px;
+      color: #666;
+    }
+
+    #button {
+      padding: 10px 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #337ab7;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Генератор случайных цитат</h1>
-    <button id="generate-button">Сгенерировать цитату</button>
-    <div id="quote-container">
-      <div id="quote"></div>
-      <div id="author"></div>
-    </div>
+  <div id="quote-container">
+    <p id="quote"></p>
+    <p id="author"></p>
+    <button id="button">Сгенерировать цитату</button>
   </div>
-  <script src="script.js"></script>
-</body>
-</html>
-</body>
 
+  <script>
+    // Массив цитат
+    const quotes = [
+      { quote: "Жизнь - это не проблема, которую нужно решить, а реальность, которую нужно испытать.", author: "Будда" },
+      { quote: "Самый большой риск в жизни - это не рискнуть.", author: "Опра Уинфри" },
+      { quote: "Единственный способ сделать великую работу - любить то, что ты делаешь.", author: "Стив Джобс" },
+      { quote: "Если вы хотите прожить счастливую жизнь, привяжите ее к цели, а не к людям или вещам.", author: "Альберт Эйнштейн" },
+      { quote: "Успех - это не окончательный, неудача - это не фатальный: это мужество продолжать, что имеет значение.", author: "Уинстон Черчилль" },
+      { quote: "Не бойтесь потерпеть неудачу. Это всего лишь возможность начать снова, на этот раз более умно.", author: "Генри Форд" },
+      { quote: "Самый важный урок в жизни - это знать, что даже дураки иногда бывают правы.", author: "Уинстон Черчилль" },
+      { quote: "Если вы думаете, что можете сделать что-то или не можете, вы правы в обоих случаях.", author: "Генри Форд" },
+      { quote: "Самый лучший способ предсказать будущее - создать его.", author: "Авраам Линкольн" },
+      { quote: "Не ждите, пока идеальные условия. Начните сейчас. С любыми условиями, которые у вас есть.", author: "Наполеон Хилл" }
+    ];
+
+    // Получить случайную цитату
+    function getRandomQuote() {
+      const index = Math.floor(Math.random() * quotes.length);
+      return quotes[index];
+    }
+
+    // Отобразить цитату
+    function displayQuote(quote) {
+      document.getElementById("quote").textContent = quote.quote;
+      document.getElementById("author").textContent = quote.author;
+    }
+
+    // Обработчик события для кнопки
+    document.getElementById("button").addEventListener("click", function() {
+      const quote = getRandomQuote();
+      displayQuote(quote);
+    });
+  </script>
+</body>
 </html>
